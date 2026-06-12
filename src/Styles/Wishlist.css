@@ -1,0 +1,238 @@
+/* Container الأساسي لصفحة الـ Wishlist */
+.wishlist-page-container {
+  padding: 30px;
+  background-color: transparent;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+/* الهيدر والعنوان */
+.wishlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.wishlist-title {
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(45deg, #ff4500, #ff007f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+}
+
+.wishlist-count {
+  color: #aaa;
+  font-size: 16px;
+  background: #23052d;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid #441256;
+}
+
+.wishlist-divider {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(to right, #441256, transparent);
+  margin-bottom: 30px;
+}
+
+/* قائمة العناصر (الـ List) */
+.wishlist-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* الكارت على شكل سطر (Row) احترافي جداً ومريح للعين */
+.wishlist-row-card {
+  display: flex;
+  align-items: center;
+  background: #190221;
+  border: 1px solid #320a40;
+  border-radius: 12px;
+  padding: 15px 25px;
+  transition: all 0.3s ease;
+}
+
+.wishlist-row-card:hover {
+  transform: translateX(5px);
+  border-color: #ff4500;
+  box-shadow: 0 5px 15px rgba(255, 69, 0, 0.15);
+}
+
+/* غلاف الصورة المستطيل الأفقي شيك */
+.wishlist-img-wrapper {
+  width: 130px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.wishlist-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* بلوك معلومات اللعبة */
+.wishlist-info-block {
+  flex-grow: 1;
+  padding-left: 25px;
+}
+
+.wishlist-game-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.wishlist-game-name:hover {
+  color: #ff4500;
+}
+
+.wishlist-game-meta {
+  display: flex;
+  gap: 15px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #bbb;
+}
+
+.stock-status {
+  color: #00ffcc;
+  font-weight: 500;
+}
+
+/* بلوك السعر */
+.wishlist-price-block {
+  padding: 0 30px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #00f0ff;
+}
+
+/* بلوك الأزرار */
+.wishlist-actions-block {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* زرار Add to Cart */
+.wishlist-btn-add-to-cart {
+  background: linear-gradient(135deg, #ff4500 0%, #cc3700 100%);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.wishlist-btn-add-to-cart:hover {
+  background: linear-gradient(135deg, #ff5714 0%, #e63e00 100%);
+}
+
+/* زرار سلة المهملات (الحذف) */
+.wishlist-btn-remove {
+  background: rgba(255, 0, 127, 0.1);
+  color: #ff007f;
+  border: 1px solid rgba(255, 0, 127, 0.2);
+  padding: 11px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.wishlist-btn-remove:hover {
+  background: #ff007f;
+  color: white;
+}
+
+/* ستايل في حالة إن الـ Wishlist فاضية */
+.wishlist-empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  background: #190221;
+  border: 1px dashed #441256;
+  border-radius: 16px;
+  margin-top: 20px;
+}
+
+.empty-icon {
+  font-size: 64px;
+  color: #441256;
+  margin-bottom: 20px;
+}
+
+.wishlist-empty-state h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.wishlist-empty-state p {
+  color: #aaa;
+  margin-bottom: 25px;
+}
+
+.back-to-shop-btn {
+  display: inline-block;
+  background: transparent;
+  color: #ff4500;
+  border: 2px solid #ff4500;
+  padding: 10px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.back-to-shop-btn:hover {
+  background: #ff4500;
+  color: white;
+  box-shadow: 0 0 15px rgba(255, 69, 0, 0.4);
+}
+
+.wishlist-loading {
+  color: #aaa;
+  text-align: center;
+  padding: 50px;
+  font-size: 18px;
+}
+
+/* الـ Responsiveness للموبايل والشاشات الصغيرة */
+@media (max-width: 768px) {
+  .wishlist-row-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+    padding: 20px;
+  }
+  .wishlist-info-block {
+    padding-left: 0;
+  }
+  .wishlist-game-meta {
+    justify-content: center;
+  }
+  .wishlist-actions-block {
+    width: 100%;
+    justify-content: center;
+  }
+  .wishlist-btn-add-to-cart {
+    flex-grow: 1;
+    justify-content: center;
+  }
+}

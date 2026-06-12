@@ -1,0 +1,158 @@
+/* 1. ضبط الخلفية لكامل الشاشة */
+.register-container {
+  background: url("https://gaming-boi-tutorial2.vercel.app/bg2.jpg") no-repeat
+    center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+
+/* 2. كارت الـ Glassmorphism */
+.register-card {
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 30px 40px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  text-align: left;
+}
+
+/* 📸 حاوية الصورة الاحترافية */
+.media-group {
+  /* دي الخلفية الافتراضية لو مفيش صورة مختارة */
+  background-image: url("https://cdn.pixabay.com/photo/2015/10/01/21/57/wallpaper-967837_1280.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 180px; /* صغرنا الطول شوية عشان يظبط مع باقي الـ inputs */
+  border-radius: 12px;
+  border: 2px dashed rgba(233, 30, 99, 0.5);
+  margin-bottom: 20px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.media-group:hover {
+  border-color: #e91e63;
+  box-shadow: 0 0 15px rgba(233, 30, 99, 0.3);
+}
+
+.upload-label {
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: 1px solid rgba(233, 30, 99, 0.4);
+  transition: all 0.2s;
+}
+
+.upload-label:hover {
+  background: #e91e63;
+  box-shadow: 0 0 10px #e91e63;
+}
+
+.media-group input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* 3. ستايل العناوين */
+.login-title {
+  color: #fff;
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.login-title .title-bold {
+  color: #e91e63;
+  font-weight: 700;
+}
+
+/* 4. الـ Inputs والمسميات */
+.register-form .input-group {
+  margin-bottom: 15px;
+}
+
+.register-form .input-group label {
+  display: block;
+  color: #b3b3b3;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+}
+
+.register-form .input-group input {
+  width: 100%;
+  padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.register-form .input-group input:focus {
+  border-color: #e91e63;
+  box-shadow: 0 0 10px rgba(233, 30, 99, 0.2);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* 5. زرار الـ Submit */
+.login-btn {
+  width: 100%;
+  padding: 11px;
+  background: #e91e63;
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+}
+
+.login-btn:hover {
+  background: #ff2a75;
+  box-shadow: 0 6px 20px rgba(233, 30, 99, 0.6);
+  transform: translateY(-2px);
+}
+
+/* 6. نص التسجيل تحت */
+.register-text {
+  color: #fff;
+  text-align: center;
+  font-size: 0.85rem;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.register-text a {
+  color: #e91e63;
+  text-decoration: none;
+  font-weight: 700;
+}

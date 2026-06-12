@@ -1,0 +1,41 @@
+.nav-list {
+  list-style: none;
+  width: 100%;
+  padding: 0 5%;
+  margin: 10px;
+  height: 100%;
+}
+.nav-list li a {
+  margin-top: 30px;
+  padding: 10px 5px;
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.nav-list li a:hover {
+  background-color: rgb(190, 30, 118);
+  transform: translateX(2%);
+}
+.nav-list .icons {
+  margin-right: 5px;
+  color: white;
+}
+.nav {
+  margin-top: 10%;
+}
+.nav h1 {
+  text-align: center;
+  width: 100%;
+  color: white;
+}
+.nav-list .active {
+  background-color: rgb(190, 30, 118);
+  transform: translateX(2%);
+}

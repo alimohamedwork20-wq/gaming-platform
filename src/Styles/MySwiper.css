@@ -1,0 +1,113 @@
+.slide {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  overflow: hidden;
+  margin-top: 3%;
+  border-radius: 10px;
+}
+
+.slide-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 👇 نزّل فيديو COD لتحت */
+.cod-video {
+  object-fit: cover;
+  object-position: center 10%; /* ينزل الرأس لتحت / يركز على الجسم */
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 80px;
+  transform: translateY(-50%);
+  color: white;
+  z-index: 2;
+}
+.overlay .call {
+  background-color: rgb(207, 116, 42);
+}
+.overlay h1 {
+  font-size: 60px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.overlay p {
+  font-size: 20px;
+  margin: 10px 0;
+  opacity: 0.85;
+}
+
+.overlay button {
+  padding: 8px 25px;
+  border: none;
+  background: #ff3c3c;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.overlay button:hover {
+  background: #ff1f1f;
+}
+.overlay {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 0.6s ease;
+}
+
+/* Swiper بيضيف الكلاس ده تلقائي */
+.swiper-slide-active .overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+.MySwiper .imgs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin-top: 3%;
+  padding: 10px 20px;
+}
+
+.MySwiper .imgs img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 16px;
+  transition: 0.4s ease;
+}
+
+.thumb {
+  opacity: 0.5;
+  transform: scale(0.95);
+  transition: 0.4s ease;
+}
+
+.thumb.active {
+  opacity: 1;
+  transform: translateY(-10%);
+  border: #ff1f1f 1px solid;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+@media (max-width: 768px) {
+  .MySwiper .imgs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .MySwiper .imgs img {
+    height: 120px;
+  }
+
+  .overlay h1 {
+    font-size: 32px;
+  }
+
+  .overlay {
+    left: 20px;
+  }
+}

@@ -1,0 +1,545 @@
+/* ==========================================================================
+   🌌 الهيكل والكونتينر الرئيسي
+   ========================================================================== */
+.game-details-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  color: #ffffff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+}
+
+.game-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 15px;
+}
+
+.game-details-header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(45deg, #ffffff, #f1a7ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.game-genre-badge {
+  background: linear-gradient(135deg, #be1e76, #7a1b67);
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   ⚔️ تقسيم الصفحة (Grid محمي من الانهيار)
+   ========================================================================== */
+.game-details-main {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+  align-items: start; /* يمنع تمدد العناصر لأسفل بسبب الـ Swiper */
+}
+
+@media (max-width: 992px) {
+  .game-details-main {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   🖼️ قسم الميديا والـ Swiper المأمن
+   ========================================================================== */
+.game-media-section {
+  width: 100%;
+  overflow: hidden; /* تأمين إضافي لمنع تمدد العرض */
+}
+
+.game-gallery-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.main-image-panel {
+  width: 100%;
+  height: 460px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(190, 30, 118, 0.25);
+  background-color: #1a0222;
+}
+
+.main-detail-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 🌟 الحاوية الخارجية المعزولة لمنع السكرول بار وتأمين أبعاد Swiper */
+.swiper-slider-holder {
+  width: 100%;
+  position: relative;
+  /* حجب السكرول بار نهائياً */
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.swiper-slider-holder::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* ستايل الـ Swiper الداخلي المستقر */
+.mySwiper {
+  width: 100%;
+  padding: 10px 5px 30px 5px !important;
+}
+
+/* الصور المصغرة بأسماء كلاسات جديدة آمنة */
+.thumb-nail-img {
+  width: 100%;
+  height: 85px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  opacity: 0.45;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.thumb-nail-img:hover:not(.active-glow) {
+  opacity: 0.8;
+  border-color: rgba(190, 30, 118, 0.4);
+}
+
+/* 🟣 الكلاس النشط الفخم (Active) */
+.thumb-nail-img.active-glow {
+  opacity: 1 !important;
+  border-color: rgb(190, 30, 118) !important;
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(190, 30, 118, 0.6) !important;
+}
+
+.mySwiper .swiper-pagination-fraction {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 0.85rem;
+  bottom: 0px !important;
+}
+
+/* ==========================================================================
+   💰 كارت البيانات اليمين (مؤمن ومستقر)
+   ========================================================================== */
+.game-info-sidebar {
+  width: 100%;
+}
+
+.info-card-panel {
+  background: rgba(35, 5, 45, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(178, 42, 131, 0.2);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.price-tag {
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 15px;
+}
+
+.buy-now-btn {
+  background: linear-gradient(135deg, #be1e76, #44104f);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.buy-now-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.add-to-wishlist-btn {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(190, 30, 118, 0.6);
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-to-wishlist-btn:hover {
+  background: rgba(190, 30, 118, 0.15);
+}
+
+.quick-meta-data {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.meta-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+}
+
+.meta-label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.rating-star {
+  color: #ffca28;
+}
+
+.platforms-box {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+}
+
+.platform-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.plat-badge {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   📝 الديسكريبشن السفلي
+   ========================================================================== */
+.game-description-section {
+  background: rgba(35, 5, 45, 0.4);
+  border: 1px solid rgba(178, 42, 131, 0.15);
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.section-divider {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, rgb(190, 30, 118), transparent);
+  margin-bottom: 20px;
+}
+
+.game-full-description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  white-space: pre-line;
+}
+/* ==========================================================================
+   🌌 الهيكل والكونتينر الرئيسي
+   ========================================================================== */
+.game-details-container {
+  max-width: 1400px; /* زودنا العرض الأقصى شوية عشان يدي براح للميديا */
+  margin: 0 auto;
+  padding: 40px 20px;
+  color: #ffffff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+}
+
+.game-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 15px;
+}
+
+.game-details-header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(45deg, #ffffff, #f1a7ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.game-genre-badge {
+  background: linear-gradient(135deg, #be1e76, #7a1b67);
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   ⚔️ تقسيم الصفحة (تحديث الـ Grid ليعطي المساحة الكاملة للشمال)
+   ========================================================================== */
+.game-details-main {
+  display: grid;
+  grid-template-columns: 1fr 380px; /* جعل الطرف الشمال مرن بالكامل واليمين ثابت */
+  gap: 30px;
+  margin-bottom: 40px;
+  align-items: start;
+  width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .game-details-main {
+    grid-template-columns: 1fr; /* يقلبوا تحت بعض في الشاشات المتوسطة والصغيرة */
+  }
+}
+
+/* ==========================================================================
+   🖼️ قسم الميديا والـ Swiper الكامل (Full Width)
+   ========================================================================== */
+.game-media-section {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  overflow: hidden;
+}
+
+.game-gallery-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* لوحة عرض الصور الكبيرة */
+.main-image-panel {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* الحفاظ على أبعاد سينمائية عريضة بدل الارتفاع الثابت */
+  height: auto; /* إلغاء الارتفاع الثابت القديم لمنع التميط */
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(190, 30, 118, 0.25);
+  background-color: #1a0222;
+}
+
+.main-detail-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 🌟 حاوية السلايدرات المشتركة الممتدة بعرض الحاوية بالكامل */
+.swiper-slider-holder {
+  width: 100% !important;
+  max-width: 100% !important;
+  position: relative;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  clear: both;
+}
+
+.swiper-slider-holder::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* ستايلات السلايدر الداخلي للصور والفيديوهات */
+.mySwiper,
+.myVideoSwiper {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 10px 5px 30px 5px !important;
+}
+
+.myVideoSwiper {
+  padding: 10px 5px 15px 5px !important; /* تقليل البادينج السفلي للفيديوهات */
+}
+
+/* الصور المصغرة (Thumbnails) للصور والفيديوهات */
+.thumb-nail-img {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* إجبار المصغرات على أخذ أبعاد شاشة عرض الفيديو */
+  height: auto; /* إلغاء الارتفاع الثابت القديم (85px) عشان يفرش مع العرض */
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  opacity: 0.55;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  display: block;
+}
+
+.thumb-nail-img:hover:not(.active-glow) {
+  opacity: 0.85;
+  border-color: rgba(190, 30, 118, 0.5);
+}
+
+/* 🟣 التوهج النشط (Active) الموحد للصور والتريلرات */
+.thumb-nail-img.active-glow {
+  opacity: 1 !important;
+  border-color: rgb(190, 30, 118) !important;
+  transform: scale(0.98); /* تأثير ضغطة خفيفة لجعلها احترافية */
+  box-shadow: 0 0 15px rgba(190, 30, 118, 0.7) !important;
+}
+
+.mySwiper .swiper-pagination-fraction {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 0.85rem;
+  bottom: 0px !important;
+}
+
+/* ==========================================================================
+   🎬 سكشن التريلرات الممتد (Steam Full Width)
+   ========================================================================== */
+.game-video-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-top: 40px;
+}
+
+/* حاوية مشغل الفيديو الكبير الممتد */
+.game-video-wrapper > div:first-of-type {
+  width: 100% !important;
+  max-width: 100% !important;
+  aspect-ratio: 16 / 9;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.8);
+  background: #000;
+  border: 1px solid rgba(190, 30, 118, 0.3);
+}
+
+/* ==========================================================================
+   💰 كارت البيانات اليمين (مؤمن ومستقر)
+   ========================================================================== */
+.game-info-sidebar {
+  width: 100%;
+}
+
+.info-card-panel {
+  background: rgba(35, 5, 45, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(178, 42, 131, 0.2);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.price-tag {
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 15px;
+}
+
+.buy-now-btn {
+  background: linear-gradient(135deg, #be1e76, #44104f);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.buy-now-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.add-to-wishlist-btn {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(190, 30, 118, 0.6);
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-to-wishlist-btn:hover {
+  background: rgba(190, 30, 118, 0.15);
+}
+
+.quick-meta-data {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.meta-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+}
+
+.meta-label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.rating-star {
+  color: #ffca28;
+}
+
+.platforms-box {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+}
+
+.platform-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.plat-badge {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   📝 الديسكريبشن السفلي
+   ========================================================================== */
+.game-description-section {
+  background: rgba(35, 5, 45, 0.4);
+  border: 1px solid rgba(178, 42, 131, 0.15);
+  padding: 30px;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+.section-divider {
+  border: none;
+}

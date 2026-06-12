@@ -1,0 +1,123 @@
+.profile-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+.profile-card {
+  background: rgba(26, 21, 41, 0.8);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 0, 127, 0.3);
+  border-radius: 25px;
+  padding: 40px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 0, 127, 0.2);
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+}
+
+/* صورة البروفايل النيون */
+.avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.avatar-wrapper {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  padding: 5px;
+  background: linear-gradient(45deg, #ff007f, #00f2fe);
+  box-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #1a1529;
+}
+
+.upload-btn {
+  background: #ff007f;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+  border: none;
+}
+
+.upload-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #ff007f;
+}
+
+/* الفورم والمدخلات */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label {
+  color: #fe007f;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.input-group input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 15px;
+  border-radius: 12px;
+  color: white;
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #ff007f;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(255, 0, 127, 0.2);
+}
+
+.save-btn {
+  background: linear-gradient(45deg, #ff007f, #7a00ff);
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.save-btn:hover {
+  filter: brightness(1.2);
+  box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
+}
+
+@media (max-width: 768px) {
+  .profile-grid { grid-template-columns: 1fr; }
+}
