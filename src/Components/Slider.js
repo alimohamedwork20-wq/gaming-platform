@@ -25,7 +25,7 @@ export default function Slider1(props) {
 
         // أ. جلب الألعاب الخاصة بالسلايدر من الـ API
         const resGames = await axios.get(
-          `https://gamingplatform.somee.com//apiGames/all?${props.url}`,
+          `https://gamingplatform.somee.com/apiGames/all?${props.url}`,
         );
         if (resGames.data && resGames.data.results) {
           setGames(resGames.data.results);
