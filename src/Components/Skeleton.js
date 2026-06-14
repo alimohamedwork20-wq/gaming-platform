@@ -27,7 +27,7 @@ const data = [
     createdAt: "10 months ago",
   },
 ];
-
+//update
 function Media(props) {
   const { loading = false } = props;
 
