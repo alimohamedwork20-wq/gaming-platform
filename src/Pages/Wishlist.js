@@ -10,7 +10,7 @@ export default function Wishlist() {
   const [wishlist, setWishlist] = useState([]);
   const [loading, setLoading] = useState(false);
   const [handelDelete, setHandelDelete] = useState(1);
-
+const API_BASE_URL = process.env.REACT_APP_API_URL;
   // 🔄 جلب البيانات من الباك إند
   useEffect(() => {
     async function GetWishlist() {
@@ -23,7 +23,7 @@ export default function Wishlist() {
         }
 
         const res = await axios.get(
-          "https://gamingplatform.somee.com/api/Users/wishlist",
+          `${API_BASE_URL}/Users/wishlist`,
           {
             headers: { Authorization: `Bearer ${token}` },
           },
@@ -45,7 +45,7 @@ export default function Wishlist() {
     try {
       const token = Cookies.get("token");
       const res = await axios.delete(
-        `https://gamingplatform.somee.com/api/Users/delete-wishlist/game/${idGame}`,
+        `${API_BASE_URL}/Users/delete-wishlist/game/${idGame}`,
         { headers: { Authorization: `Bearer ${token}` } },
       );
 

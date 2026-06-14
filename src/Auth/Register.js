@@ -13,7 +13,7 @@ const Register = () => {
   const [rpassword, setRPassword] = useState("");
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState("");
-
+  const API_BASE_URL = process.env.REACT_APP_API_URL;
   const Navigate = useNavigate();
   const RemoveImg = () => {
     setImageFile(null);
@@ -49,7 +49,7 @@ const Register = () => {
 
       // ✅ تعديل الرابط ليكون Register وبعت الـ FormData
       const res = await axios.post(
-        "https://gamingplatform.somee.com/api/Users/register",
+        `${API_BASE_URL}Users/register`,
         formData,
         {
           headers: {

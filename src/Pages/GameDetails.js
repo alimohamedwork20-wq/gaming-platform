@@ -29,7 +29,7 @@ export default function GameDetails() {
   const swiperRef = useRef(null);
   const videoSwiperRef = useRef(null);
   const token = Cookies.get("token"); // 🌟 جلب التوكن الحقيقي للمستخدم
-
+const API_BASE_URL = process.env.REACT_APP_API_URL;
   useEffect(() => {
     if (!slug) return;
     let isMounted = true;
@@ -41,7 +41,7 @@ export default function GameDetails() {
 
         // 1️⃣ جلب تفاصيل اللعبة من قاعدة البيانات الخاصة بك
         const response = await axiosInstance.get(
-          `https://gamingplatform.somee.com/apiGames/game/details`,
+          `${API_BASE_URL}Games/game/details`,
           { params: { slug: cleanSlug } },
         );
 
@@ -57,7 +57,7 @@ export default function GameDetails() {
         if (token && gameData) {
           try {
             const resWishlist = await axiosInstance.get(
-              "https://gamingplatform.somee.com/api/Users/wishlist",
+              `${API_BASE_URL}/Users/wishlist`,
               { headers: { Authorization: `Bearer ${token}` } },
             );
             // لو الـ ID بتاع اللعبة الحالية موجود في لستة اليوزر اقلب الـ State لـ true
@@ -120,7 +120,7 @@ export default function GameDetails() {
 
     try {
       const res = await axiosInstance.post(
-        `https://gamingplatform.somee.com/api/Users/add-wishlist/game/${game.id}`,
+        `${API_BASE_URL}/Users/add-wishlist/game/${game.id}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } },
       );

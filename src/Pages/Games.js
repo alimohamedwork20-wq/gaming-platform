@@ -48,6 +48,7 @@ export default function Games() {
   const [totalPages, setTotalPages] = useState(10);
   const [searchTerm, setSearchTerm] = useState("");
   const [favGameIds, setFavGameIds] = useState([]); // 🌟 لستة الـ IDs الحقيقية من الباك إند
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
   const pageSize = 21;
   const token = Cookies.get("token");
@@ -60,7 +61,7 @@ export default function Games() {
 
         // أ. جلب الألعاب بناءً على الصفحة والبحث
         const res = await axios.get(
-          `https://gamingplatform.somee.com/apiGames/all?page=${page}&pageSize=${pageSize}&search=${searchTerm}`,
+          `${API_BASE_URL}Games/all?page=${page}&pageSize=${pageSize}&search=${searchTerm}`,
         );
 
         if (res.data?.results) {
@@ -75,7 +76,7 @@ export default function Games() {
         // ب. جلب الـ Wishlist عشان نعرف إيه اللي مضاف وإيه لأ
         if (token) {
           const resWishlist = await axios.get(
-            "https://gamingplatform.somee.com/api/Users/wishlist",
+            `${API_BASE_URL}/Users/wishlist`,
             {
               headers: { Authorization: `Bearer ${token}` },
             },
@@ -213,6 +214,7 @@ function GameCardKeyed({ game, isAdded, onAddSuccess }) {
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
   const intervalRef = useRef(null);
   const navigate = useNavigate(); // 🌟 للتوجيه لصفحة الـ wishlist
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
   const gameScreenshots =
     game.screenshots?.length > 0
@@ -256,7 +258,7 @@ function GameCardKeyed({ game, isAdded, onAddSuccess }) {
 
     try {
       const res = await axios.post(
-        `https://gamingplatform.somee.com/api/Users/add-wishlist/game/${game.id}`,
+        `${API_BASE_URL}/Users/add-wishlist/game/${game.id}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } },
       );

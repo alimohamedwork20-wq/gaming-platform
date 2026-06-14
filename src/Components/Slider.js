@@ -15,7 +15,7 @@ export default function Slider1(props) {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [favorites, setFavorites] = useState([]); // بديل الـ LocalStorage القديم
-
+  const API_BASE_URL = process.env.REACT_APP_API_URL;
   // 🔄 1. جلب بيانات السلايدر والـ Wishlists معاً عند تحميل المكون
   useEffect(() => {
     async function InitSliderData() {
@@ -25,7 +25,7 @@ export default function Slider1(props) {
 
         // أ. جلب الألعاب الخاصة بالسلايدر من الـ API
         const resGames = await axios.get(
-          `https://gamingplatform.somee.com/apiGames/all?${props.url}`,
+          `${API_BASE_URL}Games/all?${props.url}`,
         );
         if (resGames.data && resGames.data.results) {
           setGames(resGames.data.results);
@@ -36,7 +36,7 @@ export default function Slider1(props) {
         // ب. مزامنة الـ Wishlist الحقيقية من الداتابيز لتفتيح الأزرار (+ أو -) صح
         if (token) {
           const resWishlist = await axios.get(
-            "https://gamingplatform.somee.com/api/Users/wishlist",
+            `${API_BASE_URL}/Users/wishlist`,
             {
               headers: { Authorization: `Bearer ${token}` },
             },
@@ -71,7 +71,7 @@ export default function Slider1(props) {
     }
     try {
       await axios.post(
-        `https://gamingplatform.somee.com/api/Users/add-wishlist/game/${gameId}`,
+        `${API_BASE_URL}/Users/add-wishlist/game/${gameId}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } },
       );
@@ -92,7 +92,7 @@ export default function Slider1(props) {
 
     try {
       await axios.delete(
-        `https://gamingplatform.somee.com/api/Users/delete-wishlist/game/${gameId}`,
+        `${API_BASE_URL}/Users/delete-wishlist/game/${gameId}`,
         { headers: { Authorization: `Bearer ${token}` } },
       );
 

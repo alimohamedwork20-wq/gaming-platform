@@ -30,7 +30,7 @@ const platformIcons = {
   mac: <FaApple title="Mac" />,
   linux: <FaLinux title="Linux" />,
 };
-
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 const darkTheme = createTheme({
   palette: {
     mode: "dark",
@@ -58,7 +58,7 @@ export default function GamesCategory() {
 
         // أ. جلب ألعاب القسم الحالي
         const res = await axios.get(
-          `https://gamingplatform.somee.com/apiGames/category?slug=${id}&page=${page}&pageSize=${pageSize}`,
+          `${API_BASE_URL}Games/category?slug=${id}&page=${page}&pageSize=${pageSize}`,
         );
 
         if (res.data?.results) {
@@ -74,7 +74,7 @@ export default function GamesCategory() {
         // ب. مزامنة الـ Wishlist الحقيقية لليوزر في هذا القسم
         if (token) {
           const resWishlist = await axios.get(
-            "https://gamingplatform.somee.com/api/Users/wishlist",
+            `${API_BASE_URL}/Users/wishlist`,
             {
               headers: { Authorization: `Bearer ${token}` },
             },
@@ -226,7 +226,7 @@ function GameCardKeyed({ game, isAdded, onAddSuccess }) {
 
     try {
       const res = await axios.post(
-        `https://gamingplatform.somee.com/api/Users/add-wishlist/game/${game.id}`,
+        `${API_BASE_URL}/Users/add-wishlist/game/${game.id}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } },
       );

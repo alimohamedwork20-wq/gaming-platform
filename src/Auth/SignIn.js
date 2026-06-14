@@ -11,12 +11,12 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const Navigate = useNavigate();
-
+ const API_BASE_URL = process.env.REACT_APP_API_URL;
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
-      const res = await axios.post("https://gamingplatform.somee.com/api/Users/signin", {
+      const res = await axios.post(`${API_BASE_URL}/Users/signin`, {
         email: email,
         password: password,
       });

@@ -51,13 +51,13 @@ export default function Home() {
       </div>
       <div className="slider2">
         <Slider1
-          url={"page=1&pageSize=8&genreId=4"}
+          url={"page=2&pageSize=8&genreId=1"}
           title="Top Games"
         ></Slider1>
       </div>
       <div style={{ paddingBottom: "20px" }} className="slider3">
         <Slider1
-          url={"page=1&pageSize=8&genreId=3"}
+          url={"page=3&pageSize=8&genreId=1"}
           title="Top PC Games"
         ></Slider1>
       </div>
